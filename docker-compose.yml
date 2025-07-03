@@ -1,0 +1,42 @@
+version: "3.8"
+
+services:
+ app:
+   build:
+     context: .
+     dockerfile: Dockerfile
+   container_name: playground-app
+   ports:
+     - "8080:80"
+   volumes:
+     - ./src:/app
+   environment:
+     APP_ENV: local
+     APP_DEBUG: true
+     DB_CONNECTION: mysql
+     DB_HOST: db
+     DB_PORT: 3307
+     DB_DATABASE: playground
+     DB_USERNAME: playground
+     DB_PASSWORD: playground
+     REDIS_HOST: redis
+     FRANKENPHP_CONFIG: /etc/caddy/Caddyfile
+
+
+ db:
+   image: mysql:8.4
+   container_name: playground-mysql
+   restart: always
+   environment:
+     MYSQL_ROOT_PASSWORD: root
+     MYSQL_DATABASE: playground
+     MYSQL_USER: playground
+     MYSQL_PASSWORD: playground
+   volumes:
+     - dbdata:/var/lib/mysql
+   ports:
+     - "3307:3306"
+
+volumes:
+ dbdata:
+

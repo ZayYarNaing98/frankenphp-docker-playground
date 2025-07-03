@@ -1,0 +1,23 @@
+{
+    frankenphp
+    order php_server before file_server
+    auto_https off
+    admin off
+
+    log {
+        output stdout
+        format console
+        level DEBUG
+    }
+}
+
+playground.test:80 {
+    root * /app/public
+
+    encode zstd br gzip
+
+    try_files {path} {path}/ /index.php?{query}
+
+    php_server
+    file_server
+}
