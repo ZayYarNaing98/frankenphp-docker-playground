@@ -6,11 +6,6 @@ A modern Laravel application running on [FrankenPHP](https://frankenphp.dev/) wi
 
 - **FrankenPHP Integration**: High-performance PHP application server with built-in HTTP/2 and WebSocket support
 - **Docker Environment**: Complete containerized development setup
-- **Product Management**: Full CRUD operations for products with image uploads
-- **Category System**: Organize products with hierarchical categories
-- **User Authentication**: Complete Laravel authentication system
-- **Role-Based Permissions**: Spatie Laravel Permission integration
-- **Modern UI**: Clean, responsive interface with Bootstrap styling
 
 ## 🛠 Tech Stack
 
@@ -19,7 +14,6 @@ A modern Laravel application running on [FrankenPHP](https://frankenphp.dev/) wi
 - **Database**: MySQL 8.0
 - **Frontend**: Blade templates with Bootstrap 5
 - **Containerization**: Docker & Docker Compose
-- **Permissions**: Spatie Laravel Permission
 
 ## 📋 Prerequisites
 
