@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd /app
+cd /var/www
 
 # If no .env exists, copy from example
 if [ ! -f ".env" ]; then
@@ -18,9 +18,7 @@ if ! grep -q "APP_KEY=base64" .env; then
 fi
 
 # Clear Laravel caches
-php artisan config:clear
-php artisan route:clear
-php artisan view:clear
+php artisan optimize:clear
 
 # Start FrankenPHP
 exec frankenphp run --config /etc/frankenphp/Caddyfile --adapter caddyfile

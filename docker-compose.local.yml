@@ -1,0 +1,56 @@
+services:
+ app:
+   build:
+    context: ./
+    dockerfile: .docker/php/Dockerfile.local
+   container_name: playground-app-local
+   restart: unless-stopped
+   working_dir: /var/www/
+   ports:
+     - "8080:80"
+   volumes:
+     - .:/var/www
+   environment:
+     APP_ENV: local
+     APP_DEBUG: true
+     DB_CONNECTION: mysql
+     DB_HOST: db
+     DB_DATABASE: ${DB_DATABASE:-playground}
+     DB_USERNAME: ${DB_USERNAME:-playground}
+     DB_PASSWORD: ${DB_PASSWORD:-playground}
+     REDIS_HOST: redis
+     FRANKENPHP_CONFIG: /etc/caddy/Caddyfile
+   networks:
+      - playground
+   healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+
+ db:
+   image: mysql:8.4
+   container_name: playground-mysql-local
+   restart: always
+   environment:
+     MYSQL_ROOT_PASSWORD: ${DB_PASSWORD:-playground}
+     MYSQL_DATABASE: ${DB_DATABASE:-playground}
+     MYSQL_USER: ${DB_USERNAME:-playground}
+     MYSQL_PASSWORD: ${DB_PASSWORD:-playground}
+     SERVICE_TAGS: dev
+     SERVICE_NAME: mysql
+   volumes:
+     - mysqldb:/var/lib/mysql
+   ports:
+     - ${DB_PORT:-3307}:3306
+   networks:
+      - playground
+
+volumes:
+  mysqldb:
+
+networks:
+  playground:
+    name: backend-local
+    driver: bridge

@@ -92,3 +92,8 @@ Route::post('/products/{id}', [ProductContoller::class, 'destroy'])->name('produ
 Auth::routes(['register' => false]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+Route::get('/health', function () {
+    return response()->json(['status' => 'ok'], 200);
+});

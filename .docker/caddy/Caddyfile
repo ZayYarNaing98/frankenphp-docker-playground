@@ -11,8 +11,8 @@
     }
 }
 
-playground.test:80 {
-    root * /app/public
+:80 {
+    root * /var/www/public
 
     encode zstd br gzip
 
