@@ -51,32 +51,6 @@ A modern Laravel application running on [FrankenPHP](https://frankenphp.dev/) wi
 
 4. **Access the application:**
    - Web application: [http://localhost:8080](http://localhost:8080)
-   - Database: `localhost:3306`
-
-## 📁 Project Structure
-
-```
-frankenphp-playground/
-├── app/
-│   ├── Http/Controllers/     # Application controllers
-│   ├── Models/              # Eloquent models
-│   └── Providers/           # Service providers
-├── database/
-│   ├── migrations/          # Database migrations
-│   └── seeders/            # Database seeders
-├── resources/views/         # Blade templates
-├── public/                  # Public assets
-├── .docker/                 # Docker configuration
-├── docker-compose.local.yml # Local development setup
-└── docs/                   # Documentation
-```
-
-## 🗄 Database Schema
-
-- **Users**: User authentication and profile management
-- **Categories**: Product categorization system
-- **Products**: Product management with image support
-- **Roles & Permissions**: Spatie permission system
 
 ## 🔧 Development Commands
 
